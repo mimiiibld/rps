@@ -59,20 +59,45 @@ if (humanChoice === computerChoice) {
    }
 };
 
+const buttons = document.querySelectorAll("button"); // 1
+const resultdiv = document.getElementById("result");
+const scoresdiv = document.getElementById("scores");
+let gameOver = false;
+
+
+buttons.forEach(button => { // 2
+  button.addEventListener("click", () => { // 3
+   if (gameOver) return; 
+    const choice = button.textContent.toLowerCase(); // 4
+    const result = playRound(choice, getComputerChoice());
+    resultdiv.textContent = result;
+    scoresdiv.textContent = `Toi: ${humanScore} - Ordi: ${computerScore}`;
+    if (humanScore === 5) {
+  resultdiv.textContent = "Fin de partie, tu as gagné !";
+  gameOver = true;
+} else if (computerScore === 5) {
+  resultdiv.textContent = "Fin de partie, l'ordinateur a gagné !";
+  gameOver = true;
+}
+
+  });
+
+});
+
+
+
+/*
 function playGame(playRound){
-
-
-while (humanScore < 5 && computerScore < 5){
 
    let humanChoice = getHumanChoice();
    let computerChoice = getComputerChoice();
-   let result = playRound(humanChoice, computerChoice)
+   let result = playRound(humanChoice, computerChoice);
 
 console.log("Ordinateur a choisi :", computerChoice);
 console.log("Humain a choisi :", humanChoice);
 console.log(result);
 console.log("Scores — Toi :", humanScore, "| Ordi :", computerScore);
-}
+
 if (humanScore === 5){
    return "Fin de partie, tu as gagné!"
 }
@@ -81,4 +106,4 @@ else if ( computerScore === 5){
 }
 };
 
-console.log(playGame(playRound));
+console.log(playGame(playRound));*/
