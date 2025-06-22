@@ -1,3 +1,5 @@
+const replayBtn = document.getElementById("replay");
+
 const computerChoice = getComputerChoice();
 
 function getComputerChoice(){
@@ -5,20 +7,20 @@ function getComputerChoice(){
 let computerChoice = Math.floor(Math.random() * 3);
 
 if (computerChoice === 0){
-    return "rock";
+    return "pierre";
 }
 
 else if (computerChoice === 1){
-    return "paper";
+    return "feuille";
 }
 else if (computerChoice === 2){
-    return "scissors";
+    return "ciseaux";
 }
 };
 
 function getHumanChoice(){
 
-   let humanChoice = prompt("Choisis : rock, paper ou scissors");
+   let humanChoice = prompt("Choisis : pierre, feuille ou ciseaux");
     
   if (!humanChoice) {
     alert("Tu n'as rien entré, réessaie !");
@@ -27,7 +29,7 @@ function getHumanChoice(){
 
   humanChoice = humanChoice.toLowerCase();
 
-  if (humanChoice !== "rock" && humanChoice !== "paper" && humanChoice !== "scissors") {
+  if (humanChoice !== "pierre" && humanChoice !== "feuille" && humanChoice !== "ciseaux") {
     alert("Choix invalide, réessaie !");
     return getHumanChoice(); // relance la question si mauvais choix
   }
@@ -47,15 +49,15 @@ if (humanChoice === computerChoice) {
     return "Égalité";  // <=== Retour immédiat si égalité
   }
     else if (
-    (humanChoice === "rock" && computerChoice === "scissors") ||
-    (humanChoice === "paper" && computerChoice === "rock") ||
-    (humanChoice === "scissors" && computerChoice === "paper")
+    (humanChoice === "pierre" && computerChoice === "ciseaux") ||
+    (humanChoice === "feuille" && computerChoice === "pierre") ||
+    (humanChoice === "ciseaux" && computerChoice === "feuille")
    ) {
     humanScore++;
-    return "Tu gagnes !";
+    return "Tu gagnes ! " + "l'ordinateur a retourné : " + computerChoice;
    } else {
     computerScore++;
-    return "Tu perds !";
+    return "Tu perds ! " + "l'ordinateur a retourné : " + computerChoice;
    }
 };
 
@@ -74,16 +76,25 @@ buttons.forEach(button => { // 2
     scoresdiv.textContent = `Toi: ${humanScore} - Ordi: ${computerScore}`;
     if (humanScore === 5) {
   resultdiv.textContent = "Fin de partie, tu as gagné !";
-  gameOver = true;
+  gameOver = true; replayBtn.style.display = "inline-block"; // 👈
 } else if (computerScore === 5) {
   resultdiv.textContent = "Fin de partie, l'ordinateur a gagné !";
   gameOver = true;
+  replayBtn.style.display = "inline-block"; // 👈
 }
 
   });
 
 });
 
+replayBtn.addEventListener("click", () => {
+  humanScore = 0;
+  computerScore = 0;
+  gameOver = false;
+  resultdiv.textContent = "";
+  scoresdiv.textContent = "";
+  replayBtn.style.display = "none";
+});
 
 
 /*

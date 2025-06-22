@@ -1,0 +1,66 @@
+* {
+    color: pink;
+    background-color: #fafaff;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* espace entre chaque bloc */
+}
+
+#buttons {
+  display: flex;
+  gap: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 500;
+  color: pink;
+  text-shadow: none;
+  background: transparent;
+  cursor: pointer;
+  box-shadow: transparent;
+  border: 1px solid pink;
+  transition: 0.5s ease;
+  user-select: none;
+}
+
+.btn:hover,
+:focus {
+  color: #ffffff;
+  background: pink;
+  border: 1px solid pink;
+  text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+  box-shadow: 0 0 5px pink, 0 0 20px pink, 0 0 50px pink,
+    0 0 100px pink;
+}
+
+#result{
+    color : pink;
+    font-size: 40px;
+}
+
+#scores {
+    color: pink;
+    font-size: 30px;
+    text-align: center;
+}
+
+h3 {
+    color: pink;
+    font-size: 30px;
+}
+
+.resultats {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 👈 centre tout en horizontal */
+  gap: 10px;
+}
+
